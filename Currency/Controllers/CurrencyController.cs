@@ -33,7 +33,7 @@ namespace CurrencyApi.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Rate>> GetExchageRate(DateTime date, int id) 
         {
-          
+            throw new NotImplementedException();
         }
 
         [HttpGet]

@@ -20,7 +20,7 @@ namespace CurrencyApi.Services
         /// <returns>Currency array</returns>
         public async Task<Currency[]> GetCompleteListOfCurrencies()
         {
-            var currencies = await _nbrbApi.GetDataAsync<Currency[]>("/rates");
+            var currencies = await _nbrbApi.GetDataAsync<Currency[]>("currencies");
             return currencies;
         }
 
@@ -33,7 +33,7 @@ namespace CurrencyApi.Services
         /// <returns>Currency by id</returns>
         public async Task<Currency> GetCurrency(int id)
         {
-            var currency = await _nbrbApi.GetDataAsync<Currency>("/rates", id);
+            var currency = await _nbrbApi.GetDataAsync<Currency>("currencies", id);
             return currency;
         }
 
@@ -50,7 +50,7 @@ namespace CurrencyApi.Services
         /// <returns>Rate array</returns>
         public async Task<Rate[]> GetRates(DateTime ondate, int periodicity = 1, int parammode = 0)
         {
-            string endpoint = "/rates";
+            string endpoint = "rates";
             string[] parameters =
             {
                 $"ondate={ondate.ToString()}",
@@ -75,7 +75,7 @@ namespace CurrencyApi.Services
         /// <returns></returns>
         public async Task<Rate> GetRate(string id, DateTime ondate, int periodicity = 1, int parammode = 0)
         {
-            string endpoint = "/rates";
+            string endpoint = "rates";
             string[] parameters =
             {
                 $"ondate={ondate.ToString()}",

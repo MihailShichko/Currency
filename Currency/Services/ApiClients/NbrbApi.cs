@@ -63,14 +63,6 @@ namespace CurrencyApi.Services.ApiClients
             return JsonConvert.DeserializeObject<T>(await responce.Content.ReadAsStringAsync());
         }
 
-        public async Task<T> GetTestDataAsync<T>(string url)
-        {
-            var responce = await _httpClient.GetAsync(url);
-            responce.EnsureSuccessStatusCode();
-
-            return JsonConvert.DeserializeObject<T>(await responce.Content.ReadAsStringAsync());
-        }
-
         public void Dispose()
         {
             _httpClient.Dispose();

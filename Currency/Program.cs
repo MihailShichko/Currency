@@ -1,5 +1,7 @@
 
 using CurrencyApi.Data;
+using CurrencyApi.Models;
+using CurrencyApi.Services.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace CurrencyApi
@@ -14,6 +16,8 @@ namespace CurrencyApi
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddScoped<IRepository<Currency>, CurrencyRepository>();
+            builder.Services.AddScoped<IRepository<Rate>, RateRepository>();
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
